@@ -12,6 +12,11 @@ export default class ProductModel {
     static get(){
         return products;
     }
+
+    static add({name,desc,price,imageUrl}){
+      const newProduct = new ProductModel(products.length+1,name,desc,price,imageUrl);
+      products.push(newProduct);
+    }
 }
 
 

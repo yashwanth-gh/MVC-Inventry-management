@@ -1,26 +1,22 @@
 import express from 'express';
-import ProductController from './src/controllers/product.controller.js';
-import path from 'path';
+import ProductController from "./src/controllers/product.controller.js";
 import ejsLayouts from 'express-ejs-layouts';
+import path from "path";
 
-//creating express server
 const server = express();
-
-//setup view engine settings
-server.set("view engine",'ejs');
-server.set("views",path.join(path.resolve(),'src','views'));
+// Parse Form data
+server.use(express.urlencoded({ extended: true }));
+// setup view engine settings
+server.set('view engine', 'ejs');
+server.set("views", path.join(path.resolve(),"src", "views"));
 
 server.use(ejsLayouts);
 
-//creating instance of ProductController class
+// Create an instance of ProductController
 const productController = new ProductController();
+server.get('/', productController.getProducts);
+server.get('/new', productController.getAddForm);
+server.post('/', productController.addnewProduct);
+server.use(express.static('src/views'));
 
-server.get("/",productController.getProducts);
-
-server.get('/', (req,res)=>{
-    return res.send('Welcome to Inventory App');
-});
-
-server.listen(3400,()=>{
-    console.log("Server listening on port 3400")
-});
+server.listen(3400);
