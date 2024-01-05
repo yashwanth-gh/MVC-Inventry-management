@@ -20,4 +20,6 @@ server.get('/new', productController.getAddForm);
 server.post('/',addProductValidation, productController.addnewProduct);
 server.use(express.static('src/views'));
 
-server.listen(3400);
+server.listen(3400,()=>{
+    console.log("Server is live at port:-3400")
+});
