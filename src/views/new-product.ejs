@@ -5,6 +5,7 @@
     <!-- validation code -->
 
         <% if(errors){ %>
+          <% console.log(errors)%>
           <div class="alert alert-danger" role="alert">
           <ul>
             <% errors.forEach(error=>{ %>

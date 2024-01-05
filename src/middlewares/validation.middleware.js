@@ -4,10 +4,10 @@ import { body,validationResult } from 'express-validator';
 //^ using express validator
 const addProductValidation = async(req,res,next)=>{
     const rules = [
-        body("name").isEmpty().withMessage("Name is required"),
-        body("desc").isEmpty().withMessage("Description is required"),  
+        body("name").notEmpty().withMessage("Name is required"),
+        body("desc").notEmpty().withMessage("Description is required"),  
         body("price").isFloat({gt:0}).withMessage("Price is required and should be non negative"),
-        body("imageUrl").isEmpty().withMessage("Image Url is required"),
+        body("imageUrl").notEmpty().withMessage("Image Url is required"),
         body("imageUrl").isURL().withMessage("Image Url is not valid")
     ]
     //promise is used as this is I/O operation and async
