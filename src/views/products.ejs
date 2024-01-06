@@ -19,10 +19,11 @@
                         <td><%= product.desc %> </td>
                         <td scope="col"><%= product.price %></td>
                         <td>
-                            <img src="<%= product.imageUrl %>" />
+                            <img src="<%= product.imageUrl %>" style="width: 50px;"/>
                         </td>
                         <td>
                             <a href="/update-product/<%= product.id %>" class="btn btn-primary">Update</a>
+                            <button class="btn btn-danger" onclick="deleteProduct('<%= product.id %>')">Delete</button>
                         </td>
                     </tr>
                     

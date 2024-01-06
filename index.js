@@ -5,6 +5,7 @@ import path from "path";
 import addProductValidation from './src/middlewares/validation.middleware.js';
 
 const server = express();
+server.use(express.static('public'));
 // Parse Form data
 server.use(express.urlencoded({ extended: true }));
 // setup view engine settings
@@ -20,6 +21,7 @@ server.get('/new', productController.getAddForm);
 server.get('/update-product/:id',productController.getUpdateProductView);
 server.post('/',addProductValidation, productController.addnewProduct);
 server.post('/update-product', productController.postUpdateProductReq);
+server.post('/delete-product/:id',productController.deleteProduct);
 server.use(express.static('src/views'));
 
 server.listen(3400,()=>{
