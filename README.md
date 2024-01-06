@@ -44,7 +44,7 @@ This is a simple Inventory Management Application built using Node.js and Expres
 <img width="960" alt="Screenshot 2024-01-06 171128" src="https://github.com/yashwanth-gh/MVC-Inventry-management/assets/107710864/720126b6-78cf-4fa0-bcf2-06bc7e751fe9">
 
 #### delete and sucessful deletion
-<img width="960" alt="Screenshot 2024-01-06 171159" src="https://github.com/yashwanth-gh/MVC-Inventry-management/assets/107710864/786a8d8c-ba57-42b2-a930-8a2e2e95b124">
 <img width="960" alt="Screenshot 2024-01-06 171153" src="https://github.com/yashwanth-gh/MVC-Inventry-management/assets/107710864/4a9499fc-67bf-46a8-a9ed-8b1a4d88f1a9">
+<img width="960" alt="Screenshot 2024-01-06 171159" src="https://github.com/yashwanth-gh/MVC-Inventry-management/assets/107710864/786a8d8c-ba57-42b2-a930-8a2e2e95b124">
 
 ####Thank you
