@@ -7,8 +7,13 @@ const addProductValidation = async(req,res,next)=>{
         body("name").notEmpty().withMessage("Name is required"),
         body("desc").notEmpty().withMessage("Description is required"),  
         body("price").isFloat({gt:0}).withMessage("Price is required and should be non negative"),
-        body("imageUrl").notEmpty().withMessage("Image Url is required"),
-        body("imageUrl").isURL().withMessage("Image Url is not valid")
+        // body("imageUrl").notEmpty().withMessage("Image Url is required"),
+        body("imageUrl").custom((value,{req})=>{
+            if(!req.file){
+                throw new Error('Image is required!');
+            }
+            return true;
+        })
     ]
     //promise is used as this is I/O operation and async
     await Promise.all(rules.map(rule => rule.run(req)));
