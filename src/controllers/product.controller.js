@@ -5,11 +5,11 @@ export default class ProductController {
     getProducts(req, res) {
         let products = ProductModel.get();
         // console.log(products);
-        res.render('products', { products,user:null});
+        res.render('products', { products,user:null,userEmail:req.session.userEmail});
     }
 
     getAddForm(req,res){
-        return res.render('new-product',{errors:null})
+        return res.render('new-product',{errors:null,userEmail:req.session.userEmail})
     }
 
     addnewProduct(req,res){
@@ -19,14 +19,14 @@ export default class ProductController {
         const imageUrl = "images/"+req.file.filename;
         ProductModel.add(name, desc, price,imageUrl);
         let products = ProductModel.get();
-        res.render('products', {products: products,user:null});
+        res.render('products', {products: products,user:null,userEmail:req.session.userEmail});
     }
 
     getUpdateProductView(req,res,next){
         const id = req.params.id;
         const ProductFound = ProductModel.getById(id);
         if(ProductFound){
-            return res.render('update-product',{product:ProductFound,errors:null})
+            return res.render('update-product',{product:ProductFound,errors:null,userEmail:req.session.userEmail})
         } 
         else{
              res.status(401).send("Product not found");
@@ -36,7 +36,7 @@ export default class ProductController {
         console.log(req.body);
         ProductModel.update(req.body);
         let products = ProductModel.get();
-        res.render('products', {products: products,user:null});
+        res.render('products', {products: products,user:null,userEmail:req.session.userEmail});
     }
 
     deleteProduct(req,res,next){
@@ -47,7 +47,7 @@ export default class ProductController {
         }
         ProductModel.delete(id);
         let products = ProductModel.get();
-        res.render('products', {products: products,user:null});
+        res.render('products', {products: products,user:null,userEmail:req.session.userEmail});
     }
 }
 

@@ -27,11 +27,24 @@ export default class SignUpController {
         if(existingUserAccount){
             // console.log(existingUserAccount);
             req.session.userEmail = email;
-            return res.render('products', { products,user:existingUserAccount });
+            return res.render('products', { products,user:existingUserAccount,userEmail:req.session.userEmail });
         }
 
         // console.log(products);
         const error = "Invalid Credentials";
         res.render('sign-in',{errorMessage:error});
+    }
+
+    logout(req,res){
+        req.session.destroy((err)=>{
+            if(err){
+                console.log(err);
+            }else{
+                res.redirect("/signin");
+            }
+        })
+        // req.session = null;
+        // res.redirect("/signin");
+        
     }
 }
