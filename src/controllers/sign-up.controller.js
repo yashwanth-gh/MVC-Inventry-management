@@ -43,6 +43,7 @@ export default class SignUpController {
                 res.redirect("/signin");
             }
         })
+        res.clearCookie('lastVisit')
         // req.session = null;
         // res.redirect("/signin");
         

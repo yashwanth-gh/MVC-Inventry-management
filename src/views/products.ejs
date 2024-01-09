@@ -1,3 +1,9 @@
+    <% if(locals.lastVisit) {%>
+        <div class="alert alert-primary" role="alert">
+            You last visited this website on : <%= locals.lastVisit %>
+        </div>
+  <% } %>
+
 <div>
     <% if(user){%>
             <h2>Welcome! <%= user.fullname %></h2>

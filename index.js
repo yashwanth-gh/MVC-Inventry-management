@@ -7,9 +7,13 @@ import { uploadFile } from './src/middlewares/file-upload.middleware.js';
 import SignUpController from './src/controllers/sign-up.controller.js';
 import session from 'express-session';
 import { auth } from './src/middlewares/auth.middleware.js';
+import cookieParser from 'cookie-parser';
+import { setLastVisit } from './src/middlewares/lastVisited.middleware.js'
 
 const server = express();
 server.use(express.static('public'));
+server.use(cookieParser());
+
 // Parse Form data
 server.use(express.urlencoded({ extended: true }));
 // setup view engine settings
@@ -39,7 +43,7 @@ server.post('/signin', signUpController.postSignIn)
 server.get('/logout',signUpController.logout);
 
 server.get('/',auth ,productController.getProducts);
-server.get('/new',auth, productController.getAddForm);
+server.get('/new',setLastVisit,auth, productController.getAddForm);
 server.get('/update-product/:id',auth ,productController.getUpdateProductView);
 
 
