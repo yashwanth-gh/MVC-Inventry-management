@@ -4,6 +4,7 @@ import ejsLayouts from 'express-ejs-layouts';
 import path from "path";
 import addProductValidation from './src/middlewares/validation.middleware.js';
 import { uploadFile } from './src/middlewares/file-upload.middleware.js';
+import SignUpController from './src/controllers/sign-up.controller.js';
 
 const server = express();
 server.use(express.static('public'));
@@ -17,6 +18,13 @@ server.use(ejsLayouts);
 
 // Create an instance of ProductController
 const productController = new ProductController();
+const signUpController = new SignUpController();
+server.get('/signup',signUpController.getSignUp)
+server.get('/signin',signUpController.getSignIn);
+
+server.post('/signup',signUpController.postSignUp)
+server.post('/signin',signUpController.postSignIn)
+
 server.get('/', productController.getProducts);
 server.get('/new', productController.getAddForm);
 server.get('/update-product/:id', productController.getUpdateProductView);

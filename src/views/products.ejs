@@ -1,32 +1,44 @@
+<div>
+    <% if(user){%>
+            <h2>Welcome! <%= user.fullname %></h2>
+    <% }%>
+</div>
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th scope="col">Image</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% products.forEach(product=>{ %>
 
-        <table class="table table-dark">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Image</th>
-                    <th scope="col">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% products.forEach(product=>{ %>
+            <tr>
+                <th>
+                    <%= product.id %>
+                </th>
+                <td>
+                    <%= product.name %>
+                </td>
+                <td>
+                    <%= product.desc %>
+                </td>
+                <td scope="col">
+                    <%= product.price %>
+                </td>
+                <td>
+                    <img src="<%= product.imageUrl %>" style="width: 50px;" />
+                </td>
+                <td>
+                    <a href="/update-product/<%= product.id %>" class="btn btn-primary">Update</a>
+                    <button class="btn btn-danger" onclick="deleteProduct('<%= product.id %>')">Delete</button>
+                </td>
+            </tr>
 
-                    <tr>
-                        <th><%= product.id %></th>
-                        <td><%= product.name %></td>
-                        <td><%= product.desc %> </td>
-                        <td scope="col"><%= product.price %></td>
-                        <td>
-                            <img src="<%= product.imageUrl %>" style="width: 50px;"/>
-                        </td>
-                        <td>
-                            <a href="/update-product/<%= product.id %>" class="btn btn-primary">Update</a>
-                            <button class="btn btn-danger" onclick="deleteProduct('<%= product.id %>')">Delete</button>
-                        </td>
-                    </tr>
-                    
-                    <% })%>
-            </tbody>
-        </table>
+            <% })%>
+    </tbody>
+</table>
