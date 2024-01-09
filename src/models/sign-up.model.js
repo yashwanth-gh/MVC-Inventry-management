@@ -21,7 +21,7 @@ export default class SignUpModel{
         // })
         if(userAccount){
             // console.log("line 23",users);
-            console.log("line 24",userAccount);
+            // console.log("line 24",userAccount);
             return userAccount;
         }
         return null;

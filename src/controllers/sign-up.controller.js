@@ -26,6 +26,7 @@ export default class SignUpController {
         let products = ProductModel.get();
         if(existingUserAccount){
             // console.log(existingUserAccount);
+            req.session.userEmail = email;
             return res.render('products', { products,user:existingUserAccount });
         }
 
